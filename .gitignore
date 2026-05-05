@@ -1,0 +1,5 @@
+kokoro-en-v0_19
+*.so
+models/*
+sherpa-onnx-offline-tts
+target

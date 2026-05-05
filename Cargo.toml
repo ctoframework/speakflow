@@ -1,0 +1,42 @@
+[package]
+name = "comms-coach"
+version = "0.1.0"
+edition = "2021"
+description = "Local-first communications coach for engineering leaders"
+
+[dependencies]
+# UI
+eframe = { version = "0.29", default-features = false, features = ["default_fonts", "glow", "persistence"] }
+egui = "0.29"
+egui_extras = { version = "0.29", features = ["all_loaders"] }
+egui_plot = "0.29"
+
+# Async runtime (egui is sync; we run network/CPU work on a worker)
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "sync", "time", "process", "io-util"] }
+
+# HTTP client for Ollama (rustls so we don't need OpenSSL on Windows)
+reqwest = { version = "0.12", default-features = false, features = ["json", "stream", "rustls-tls"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# Audio capture (cross-platform: CoreAudio / WASAPI / ALSA)
+cpal = "0.15"
+hound = "3.5"           # WAV writing for the whisper-cli subprocess
+
+# WAV playback for TTS (kokoros). default-features off so we don't pull in
+# every decoder — only WAV is needed since kokoros emits WAV.
+rodio = { version = "0.20", default-features = false, features = ["wav"] }
+
+# Misc
+anyhow = "1"
+parking_lot = "0.12"
+rand = "0.8"
+log = "0.4"
+env_logger = "0.11"
+dirs = "5"
+futures-util = "0.3"
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 1
