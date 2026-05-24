@@ -10,6 +10,8 @@ your machine — no audio or transcripts leave the box.
 - **Audio I/O:** `cpal` for capture, `rodio` for playback (CoreAudio / WASAPI / ALSA)
 - **History:** append-only JSON-lines log on disk; trends rendered with `egui_plot`
 
+<img src="docs/speakflow-screenshot.png" style="width: 50%;" />
+
 ## Session flow
 
 1. **Welcome screen** — single button: *Start a coaching exercise*.
