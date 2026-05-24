@@ -704,7 +704,7 @@ impl eframe::App for CoachApp {
         let mut go_debug_top = false;
         egui::TopBottomPanel::top("top").show(ctx, |ui| {
             ui.horizontal(|ui| {
-                ui.heading("🎙  Communications Coach");
+                ui.heading("🎙  Speakflow");
                 ui.with_layout(egui::Layout::right_to_left(egui::Align::Center), |ui| {
                     ui.add_enabled_ui(stable, |ui| {
                         if ui.link("View config").clicked() {

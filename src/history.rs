@@ -1,9 +1,9 @@
 //! Persistent log of past coaching sessions.
 //!
 //! Stored as JSON-lines under the platform data dir
-//! (`%APPDATA%\comms-coach\history.jsonl` on Windows,
-//! `~/.local/share/comms-coach/history.jsonl` on Linux,
-//! `~/Library/Application Support/comms-coach/history.jsonl` on macOS).
+//! (`%APPDATA%\speakflow\history.jsonl` on Windows,
+//! `~/.local/share/speakflow/history.jsonl` on Linux,
+//! `~/Library/Application Support/speakflow/history.jsonl` on macOS).
 //!
 //! Append-only at write time, full read at start-up. Sessions are tiny
 //! (a few KB each), so this scales for hundreds of exercises before we'd
@@ -61,7 +61,7 @@ impl Session {
 
 fn history_path() -> Option<PathBuf> {
     let mut p = dirs::data_dir()?;
-    p.push("comms-coach");
+    p.push("speakflow");
     if let Err(e) = fs::create_dir_all(&p) {
         log::warn!("could not create history dir: {e}");
         return None;

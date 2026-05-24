@@ -10,7 +10,7 @@
 //!   4. Either add that folder to PATH, or set:
 //!         WHISPER_BIN=C:\tools\whisper\whisper-cli.exe
 //!   5. Download a model (e.g. ggml-base.en.bin) into:
-//!         %APPDATA%\comms-coach\models\ggml-base.en.bin
+//!         %APPDATA%\speakflow\models\ggml-base.en.bin
 //!      or set WHISPER_MODEL to a custom path.
 //!
 //! macOS / Linux:
@@ -95,7 +95,7 @@ impl Transcriber {
             .duration_since(std::time::UNIX_EPOCH)
             .map(|d| d.as_nanos())
             .unwrap_or(0);
-        let wav_path = tmp_dir.join(format!("comms-coach-{stamp}.wav"));
+        let wav_path = tmp_dir.join(format!("speakflow-{stamp}.wav"));
         crate::audio::write_wav_16k(&wav_path, samples_16k_mono)
             .context("writing temp WAV for whisper")?;
 
@@ -236,6 +236,6 @@ fn resolve_model() -> Result<PathBuf> {
         return Ok(PathBuf::from(p));
     }
     let mut p = dirs::config_dir().context("no config dir")?;
-    p.push("comms-coach/models/ggml-base.en.bin");
+    p.push("speakflow/models/ggml-base.en.bin");
     Ok(p)
 }

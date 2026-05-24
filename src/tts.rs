@@ -17,7 +17,7 @@
 //!           voices.bin
 //!           tokens.txt
 //!           espeak-ng-data/
-//!      Either drop the folder into `%APPDATA%\comms-coach\models\kokoro-en-v0_19`
+//!      Either drop the folder into `%APPDATA%\speakflow\models\kokoro-en-v0_19`
 //!      or set KOKORO_MODEL_DIR to its full path.
 //!   4. Optional: pick a different voice with KOKORO_VOICE_ID (0..10,
 //!      default 0). For kokoro-en-v0_19, the IDs map to af, af_bella,
@@ -90,7 +90,7 @@ impl Tts {
             .duration_since(std::time::UNIX_EPOCH)
             .map(|d| d.as_nanos())
             .unwrap_or(0);
-        let out_path = tmp_dir.join(format!("comms-coach-tts-{stamp}.wav"));
+        let out_path = tmp_dir.join(format!("speakflow-tts-{stamp}.wav"));
 
         // sherpa-onnx-offline-tts wants the model paths as `--key=value` and
         // the text as a positional argument.
@@ -173,7 +173,7 @@ fn resolve_model_dir() -> Result<PathBuf> {
     // Default: drop the extracted Kokoro folder next to the whisper models
     // under the platform config dir, so the user has one place for everything.
     let mut p = dirs::config_dir().context("no config dir")?;
-    p.push("comms-coach/models/kokoro-en-v0_19");
+    p.push("speakflow/models/kokoro-en-v0_19");
     Ok(p)
 }
 
@@ -198,7 +198,7 @@ impl Player {
         let busy = Arc::new(AtomicBool::new(false));
         let busy_clone = busy.clone();
         thread::Builder::new()
-            .name("comms-coach-tts-player".into())
+            .name("speakflow-tts-player".into())
             .spawn(move || run_player(rx, busy_clone))
             .expect("spawn audio player thread");
         Self { tx, busy }

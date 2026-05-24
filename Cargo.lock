@@ -441,30 +441,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "comms-coach"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "cpal",
- "dirs",
- "eframe",
- "egui",
- "egui_extras",
- "egui_plot",
- "env_logger",
- "futures-util",
- "hound",
- "log",
- "parking_lot",
- "rand 0.8.6",
- "reqwest",
- "rodio",
- "serde",
- "serde_json",
- "tokio",
-]
-
-[[package]]
 name = "concurrent-queue"
 version = "2.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3104,6 +3080,30 @@ checksum = "3a766e1110788c36f4fa1c2b71b387a7815aa65f88ce0229841826633d93723e"
 dependencies = [
  "libc",
  "windows-sys 0.61.2",
+]
+
+[[package]]
+name = "speakflow"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "cpal",
+ "dirs",
+ "eframe",
+ "egui",
+ "egui_extras",
+ "egui_plot",
+ "env_logger",
+ "futures-util",
+ "hound",
+ "log",
+ "parking_lot",
+ "rand 0.8.6",
+ "reqwest",
+ "rodio",
+ "serde",
+ "serde_json",
+ "tokio",
 ]
 
 [[package]]

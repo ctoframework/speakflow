@@ -125,7 +125,7 @@ pub fn default_social_banter() -> Persona {
 
 fn store_path() -> Option<PathBuf> {
     let mut p = dirs::data_dir()?;
-    p.push("comms-coach");
+    p.push("speakflow");
     if let Err(e) = fs::create_dir_all(&p) {
         log::warn!("could not create personas dir: {e}");
         return None;

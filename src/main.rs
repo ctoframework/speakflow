@@ -1,4 +1,4 @@
-//! Communications Coach — local-first speaking practice for engineering leaders.
+//! Speakflow — local-first speaking practice for engineering leaders.
 //!
 //! Architecture:
 //!   - eframe/egui drives the UI on the main thread (immediate mode).
@@ -34,12 +34,12 @@ fn main() -> eframe::Result<()> {
         viewport: egui::ViewportBuilder::default()
             .with_inner_size([900.0, 720.0])
             .with_min_inner_size([640.0, 520.0])
-            .with_title("Communications Coach"),
+            .with_title("Speakflow"),
         ..Default::default()
     };
 
     eframe::run_native(
-        "Communications Coach",
+        "Speakflow",
         native_options,
         Box::new(move |cc| Ok(Box::new(CoachApp::new(cc, rt_handle)))),
     )

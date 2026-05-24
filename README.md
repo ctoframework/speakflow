@@ -1,4 +1,4 @@
-# Communications Coach
+# Speakflow
 
 A local-first speaking coach for senior engineering leaders. Runs entirely on
 your machine — no audio or transcripts leave the box.
@@ -48,9 +48,9 @@ dir:
 
 | Platform | Path |
 |---|---|
-| Windows | `%APPDATA%\comms-coach\history.jsonl` |
-| macOS   | `~/Library/Application Support/comms-coach/history.jsonl` |
-| Linux   | `~/.local/share/comms-coach/history.jsonl` |
+| Windows | `%APPDATA%\speakflow\history.jsonl` |
+| macOS   | `~/Library/Application Support/speakflow/history.jsonl` |
+| Linux   | `~/.local/share/speakflow/history.jsonl` |
 
 The Trends view shows the exact path under "Where is this stored?". Delete
 the file to reset trends; the format is human-readable so you can also edit
@@ -104,7 +104,7 @@ git clone https://github.com/ggerganov/whisper.cpp && cd whisper.cpp && make
 
 **Windows (PowerShell):**
 ```powershell
-$dir = "$env:APPDATA\comms-coach\models"
+$dir = "$env:APPDATA\speakflow\models"
 New-Item -ItemType Directory -Force -Path $dir | Out-Null
 Invoke-WebRequest -Uri "https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-base.en.bin" `
                   -OutFile "$dir\ggml-base.en.bin"
@@ -112,8 +112,8 @@ Invoke-WebRequest -Uri "https://huggingface.co/ggerganov/whisper.cpp/resolve/mai
 
 **macOS / Linux:**
 ```bash
-mkdir -p ~/.config/comms-coach/models
-curl -L -o ~/.config/comms-coach/models/ggml-base.en.bin \
+mkdir -p ~/.config/speakflow/models
+curl -L -o ~/.config/speakflow/models/ggml-base.en.bin \
   https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-base.en.bin
 ```
 
@@ -141,7 +141,7 @@ model that gives state-of-the-art quality at small-model footprint.
 5. Extract the archive into the app's models dir so it sits next to the
    whisper model:
    ```powershell
-   $dir = "$env:APPDATA\comms-coach\models"
+   $dir = "$env:APPDATA\speakflow\models"
    # Result should be: $dir\kokoro-en-v0_19\{model.onnx, voices.bin, tokens.txt, espeak-ng-data\}
    ```
    Or set `KOKORO_MODEL_DIR` to wherever you extracted it.
@@ -176,7 +176,7 @@ Useful environment variables:
 - `WHISPER_BIN` — full path to `whisper-cli.exe` / `whisper-cli` if it's not on PATH.
 - `WHISPER_MODEL` — path to a `.bin` whisper model.
 - `SHERPA_BIN` — full path to `sherpa-onnx-offline-tts(.exe)` (optional; disables spoken prompts when unset).
-- `KOKORO_MODEL_DIR` — folder containing `model.onnx`, `voices.bin`, `tokens.txt`, and `espeak-ng-data/`. Defaults to `%APPDATA%\comms-coach\models\kokoro-en-v0_19`.
+- `KOKORO_MODEL_DIR` — folder containing `model.onnx`, `voices.bin`, `tokens.txt`, and `espeak-ng-data/`. Defaults to `%APPDATA%\speakflow\models\kokoro-en-v0_19`.
 - Voice is set per-persona in the **Personas** editor (not via env var).
 - `RUST_LOG=debug` — verbose logging.
 

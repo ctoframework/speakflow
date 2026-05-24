@@ -1,8 +1,8 @@
 [package]
-name = "comms-coach"
+name = "speakflow"
 version = "0.1.0"
 edition = "2021"
-description = "Local-first communications coach for engineering leaders"
+description = "Local-first speaking coach for engineering leaders"
 
 [dependencies]
 # UI
